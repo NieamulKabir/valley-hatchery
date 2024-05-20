@@ -4,6 +4,7 @@ import App from "../App";
 import Login from "../Login";
 import ReportLoss from "../component/ReportLoss";
 import RunReport from "../component/RunReport";
+import ManageProducts from "../component/ManageProducts";
 
 const routes = createBrowserRouter([
   {
@@ -15,13 +16,17 @@ const routes = createBrowserRouter([
         element: <Login />,
       },
       {
-        path:"/reportLoss",
-        element:<ReportLoss />
+        path: "/reportLoss",
+        element: <ReportLoss />,
       },
       {
-        path:"/runReport",
-        element:<RunReport />
-      }
+        path: "/runReport",
+        element: <RunReport />,
+      },
+      {
+        path: "manageProduct",
+        element: <ManageProducts />,
+      },
     ],
   },
 ]);
