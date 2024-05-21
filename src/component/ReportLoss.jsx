@@ -11,9 +11,32 @@ const ReportLoss = () => {
     name: "skus", // Name of the field array
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log("Form Data:", data);
     // Add form submission logic here
+
+    try {
+      const response = await fetch(
+        "https://your-api-endpoint.com/report-loss",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.statusText}`);
+      }
+      const result = await response.json();
+      console.log("Success:", result);
+      // Handle success (e.g., display a success message, reset the form, etc.)
+    } catch (error) {
+      console.error("Error:", error);
+      // Handle error (e.g., display an error message)
+    }
   };
 
   return (

@@ -1,10 +1,26 @@
+import { useForm } from "react-hook-form";
+
 const ManageProducts = () => {
+
+  const {
+    register,
+    handleSubmit,
+    // formState: { errors },
+  } = useForm();
+
+  
+
+  const onSubmit = (data) => {
+    console.log("Form Data:", data);
+    // Add  form submission logic here
+
+  };
   return (
     <div className="mx-2">
       <h1 className="text-center mt-[100px] text-3xl font-bold">
         Manage Product{" "}
       </h1>
-      <form className="mx-auto my-10 rounded-xl bg-gray-300 p-9 lg:max-w-[50%] ">
+      <form onSubmit={handleSubmit(onSubmit)}  className="mx-auto my-10 rounded-xl bg-gray-300 p-9 lg:max-w-[50%] ">
         <div className="text-left mx-auto">
           {/* sku  */}
           <div className="flex justify-center items-center mb-2">
@@ -17,6 +33,7 @@ const ManageProducts = () => {
               name="sku"
               id="sku"
               required
+              {...register("sku", { required: "SKU is required" })}
             />
           </div>
           {/* productName  */}
@@ -30,6 +47,7 @@ const ManageProducts = () => {
               name="productName"
               id="productName"
               required
+              {...register("productName", { required: "productName is required" })}
             />
           </div>
 
@@ -43,6 +61,7 @@ const ManageProducts = () => {
               name="cost"
               id="cost"
               required
+              {...register("cost", { required: "cost is required" })}
             />
           </div>
 

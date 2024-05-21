@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import logo from "../src/assets/logo.png";
 
 const Login = () => {
   const {
@@ -14,14 +15,19 @@ const Login = () => {
     console.log("Form Data:", data);
     // Add  form submission logic here
 
-    navigate('/dashboard');
+    navigate("/menu/reportLoss");
   };
   return (
     <div className="mt-[60px]">
       <div className="hero min-h-screen ">
         <div className="card w-full max-w-sm shadow-2xl ">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-            <h1 className="text-center text-xl font-bold">Logo</h1>
+            <img
+              src={logo}
+              className="h-40 w-40 rounded-full mx-auto"
+              alt="valley-hatchery"
+            />
+
             <div className="form-control">
               <label className="label">
                 <span className="label-text font-semibold text-black">
@@ -32,10 +38,11 @@ const Login = () => {
                 type="email"
                 placeholder="email"
                 className="text-gray-600 input input-bordered bg-gray-200"
-              
                 {...register("email", { required: "Email is required" })}
               />
-              {errors.email && <p style={{ color: 'red' }}>{errors.email.message}</p>}
+              {errors.email && (
+                <p style={{ color: "red" }}>{errors.email.message}</p>
+              )}
             </div>
             <div className="form-control">
               <label className="label">
@@ -47,7 +54,6 @@ const Login = () => {
                 type="password"
                 placeholder="password"
                 className="input input-bordered bg-gray-200"
-                
                 {...register("password", { required: "Password is required" })}
               />
               {errors.password && (
