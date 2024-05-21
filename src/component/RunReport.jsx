@@ -1,32 +1,32 @@
 const RunReport = () => {
   return (
-    <div>
+    <div className="mx-2">
       <h1 className="text-center mt-[100px] text-3xl font-bold">Run Report </h1>
-      <form className="mx-auto my-10 rounded-xl bg-gray-300 p-9 max-w-[50%] ">
-        <div className="text-left flex max-w-full mx-auto">
-          {/* first name  */}
+      <form className="my-10 rounded-xl bg-gray-300 p-9 md:max-w-[60%]  mx-auto ">
+        <div className="text-left lg:flex md:max-w-full lg:justify-center items-center">
+          {/* start date  */}
           <div className="flex justify-center items-center mb-2 mr-10">
-            <label className="pr-2 font-semibold" htmlFor="firstName">
-              Start <span>Date</span>:
+            <label className="pr-2 font-semibold" htmlFor="startDate">
+              Start <span className="text-pink-600">Date</span>:
             </label>
             <input
-              className="rounded-md bg-[#ffffff] px-3 py-2"
-              type="text"
-              name="firstName"
-              id="firstName"
+              className="rounded-md bg-[#ffffff] px-3 py-2 justify-end"
+              type="date"
+              name="startDate"
+              id="startDate"
               required
             />
           </div>
           {/* last name  */}
-          <div className="flex justify-center items-center mb-2">
-            <label className="pr-2 font-semibold" htmlFor="lastName">
-              End <span>Date</span>:
+          <div className="flex justify-center items-center mb-2 mr-10">
+            <label className="pr-2 font-semibold" htmlFor="endDate">
+              End <span className="text-pink-600">Date</span>:
             </label>
             <input
-              className="rounded-md bg-[#ffffff] px-3 py-2"
-              type="text"
-              name="lastName"
-              id="lastName"
+              className="rounded-md bg-[#ffffff] px-3 py-2 justify-end"
+              type="date"
+              name="endDate"
+              id="endDate"
               required
             />
           </div>

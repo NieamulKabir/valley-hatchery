@@ -5,6 +5,8 @@ import Login from "../Login";
 import ReportLoss from "../component/ReportLoss";
 import RunReport from "../component/RunReport";
 import ManageProducts from "../component/ManageProducts";
+import Menu from "../layout/Menu";
+import Home from "../component/Home";
 
 const routes = createBrowserRouter([
   {
@@ -12,19 +14,29 @@ const routes = createBrowserRouter([
     element: <App />,
     children: [
       {
+        index: true,
+        element: <Home />,
+      },
+      {
         path: "/login",
         element: <Login />,
       },
+    ],
+  },
+  {
+    path: "/menu",
+    element: <Menu />,
+    children: [
       {
-        path: "/reportLoss",
+        path: "/menu/reportLoss",
         element: <ReportLoss />,
       },
       {
-        path: "/runReport",
+        path: "/menu/runReport",
         element: <RunReport />,
       },
       {
-        path: "manageProduct",
+        path: "/menu/manageProduct",
         element: <ManageProducts />,
       },
     ],

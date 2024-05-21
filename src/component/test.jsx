@@ -1,19 +1,16 @@
-import { useFieldArray, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 const ReportLoss = () => {
-  const { register, handleSubmit, control } = useForm({
-    defaultValues: {
-      skus: [{ skuId: "", lossQuantity: "" }], // Default values for SKU and loss quantity
-    },
-  });
-  const { fields, append, remove } = useFieldArray({
-    control,
-    name: "skus", // Name of the field array
-  });
+  const {
+    register,
+    handleSubmit,
+    // control,
+    // formState: { errors },
+  } = useForm();
 
   const onSubmit = (data) => {
     console.log("Form Data:", data);
-    // Add form submission logic here
+    // Add  form submission logic here
   };
 
   return (
@@ -101,59 +98,51 @@ const ReportLoss = () => {
               {...register("notes")}
             />
           </div>
-          <div className="text-left">
-            {fields.map((field, index) => (
-              <div
-                key={field.id}
-                className="lg:flex lg:justify-center lg:items-center mb-4 md:mb-6 lg:mb-8"
+
+          <div className="lg:flex lg:justify-between text-left">
+            <div className="flex justify-center items-center mb-2">
+              <label
+                className="w-[30%] lg:w-full  pr-2 font-semibold"
+                htmlFor="skuId"
               >
-                <label
-                  className="pr-2 font-semibold w-full"
-                  htmlFor={`skus[${index}].skuId`}
-                >
-                  Enter SKU ID:
-                </label>
-                <input
-                  className="mr-2 rounded-md bg-[#ffffff] px-3 py-2 w-full"
-                  type="text"
-                  name={`skus[${index}].skuId`}
-                  id={`skus[${index}].skuId`}
-                  {...register(`skus[${index}].skuId`)}
-                />
-                <label
-                  className="pr-2  font-semibold "
-                  htmlFor={`skus[${index}].lossQuantity`}
-                >
-                  Loss Quantity:
-                </label>
-                <input
-                  className="w-full rounded-md bg-[#ffffff] px-3 py-2"
-                  type="number"
-                  name={`skus[${index}].lossQuantity`}
-                  id={`skus[${index}].lossQuantity`}
-                  {...register(`skus[${index}].lossQuantity`)}
-                />
-                <button
-                  className="btn ml-2"
-                  type="button"
-                  onClick={() => remove(index)}
-                >
-                  Remove
-                </button>
-              </div>
-            ))}
-            <div className="flex flex-wrap justify-end text-left">
-              <button
-                type="button"
-                className="btn my-2 mx-2"
-                onClick={() => append({ skuId: "", lossQuantity: "" })}
-              >
-                Add More SKUs
-              </button>
-              <button type="submit" className="btn my-2">
-                Save Loss Report
-              </button>
+                Enter SKU ID:
+              </label>
+              <input
+                className="w-[70%] lg:w-full lg:ml-[54px] rounded-md bg-[#ffffff] px-3 py-2"
+                type="text"
+                name="skuId"
+                id="skuId"
+                required
+              />
             </div>
+
+            <div className="flex justify-center items-center mb-2 lg:text-right">
+              <label
+                className="w-[30%] lg:w-full  pr-2 font-semibold md:l-[30px]"
+                htmlFor="lossQuantity"
+              >
+                Loss Quantity:
+              </label>
+              <input
+                className="w-[70%] lg:w-full rounded-md bg-[#ffffff] px-3 py-2"
+                type="number"
+                name="lossQuantity"
+                id="lossQuantity"
+                required
+                {...register("lossQuantity", {
+                  required: "lossQuantity Date is required",
+                })}
+              />
+            </div>
+          </div>
+
+          <div className="flex justify-end text-left">
+            <button type="button" className="btn my-2 mx-2">
+              Add More SKUs
+            </button>
+            <button type="submit" className="btn my-2 ">
+              Save Loss Report
+            </button>
           </div>
         </div>
       </form>
